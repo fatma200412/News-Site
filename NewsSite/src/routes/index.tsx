@@ -1,3 +1,7 @@
+import AddNews from "../pages/admin/addNews";
+import AdminRoot from "../pages/admin/adminRoot";
+import Dashboard from "../pages/admin/dashboard";
+import News from "../pages/admin/news";
 import NoPage from "../pages/noPage";
 import About from "../pages/user/about";
 import Advertise from "../pages/user/advertise";
@@ -26,6 +30,25 @@ export const routes = [
       {
         path: "/privaryPolicy",
         element: <PrivacyPolicy />,
+      },
+    ],
+  },
+  {
+    path: "/admin",
+    element: <AdminRoot />,
+
+    children: [
+      {
+        path: "/admin",
+        element: <Dashboard />,
+      },
+      {
+        path: "/admin/news",
+        element: <News />,
+      },
+      {
+        path: "/admin/addnews",
+        element: <AddNews />,
       },
     ],
   },

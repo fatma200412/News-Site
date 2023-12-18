@@ -43,6 +43,8 @@ function Navbar({}: Props) {
 
   const [openLocal, setOpenLocal] = React.useState<boolean>(false);
 
+  const [openBorder, setOpenBorder] = React.useState<boolean>(false);
+
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -62,49 +64,54 @@ function Navbar({}: Props) {
   const handleLocalOpen = (state: boolean) => {
     setOpenLocal(!state);
   };
+  const handleBorderOpen = (state: boolean) => {
+    setOpenBorder(!state);
+  };
 
   return (
     <>
-      <Container
-        maxWidth="xl"
-        style={{
-          backgroundColor: "#101010",
-          color: "#F2F2F2",
-          padding: "25px 20px 10px 20px",
-          textAlign: "center",
-        }}
-      >
-        <Box sx={{ flexGrow: 1 }}>
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <Swiper
-                spaceBetween={0}
-                slidesPerView={7}
-                onSlideChange={() => console.log("slide change")}
-                onSwiper={(swiper) => console.log(swiper)}
-                style={{ fontSize: "13.12px", fontFamily: "sans-serif" }}
-              >
-                <SwiperSlide>Verdict In Giuliani Trial</SwiperSlide>
-                <SwiperSlide>|</SwiperSlide>
-                <SwiperSlide> Matthew Perry's Cause of Death</SwiperSlide>
-                <SwiperSlide>|</SwiperSlide>
-                <SwiperSlide>East Coast Storms</SwiperSlide>
-                <SwiperSlide>|</SwiperSlide>
-                <SwiperSlide> "48 Hours" Preview</SwiperSlide>
-                <SwiperSlide>|</SwiperSlide>
-                <SwiperSlide>CBS News Live</SwiperSlide>
-                <SwiperSlide>|</SwiperSlide>
-                <SwiperSlide>Managing Your Money</SwiperSlide>
-                <SwiperSlide>|</SwiperSlide>
-                <SwiperSlide> Newsletters</SwiperSlide>
-              </Swiper>
+      <AppBar position="static" style={{ backgroundColor: "#101010" }}>
+        <Container
+          maxWidth="xl"
+          style={{
+            backgroundColor: "#101010",
+            color: "#F2F2F2",
+            padding: "25px 20px 10px 20px",
+            textAlign: "center",
+          }}
+        >
+          <Box sx={{ flexGrow: 1 }}>
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <Swiper
+                  spaceBetween={0}
+                  slidesPerView={7}
+                  onSlideChange={() => console.log("slide change")}
+                  onSwiper={(swiper) => console.log(swiper)}
+                  style={{ fontSize: "13.12px", fontFamily: "sans-serif" }}
+                >
+                  <SwiperSlide>Verdict In Giuliani Trial</SwiperSlide>
+                  <SwiperSlide>|</SwiperSlide>
+                  <SwiperSlide> Matthew Perry's Cause of Death</SwiperSlide>
+                  <SwiperSlide>|</SwiperSlide>
+                  <SwiperSlide>East Coast Storms</SwiperSlide>
+                  <SwiperSlide>|</SwiperSlide>
+                  <SwiperSlide> "48 Hours" Preview</SwiperSlide>
+                  <SwiperSlide>|</SwiperSlide>
+                  <SwiperSlide>CBS News Live</SwiperSlide>
+                  <SwiperSlide>|</SwiperSlide>
+                  <SwiperSlide>Managing Your Money</SwiperSlide>
+                  <SwiperSlide>|</SwiperSlide>
+                  <SwiperSlide> Newsletters</SwiperSlide>
+                </Swiper>
+              </Grid>
+              <Grid item xs={1}></Grid>
+              <Grid item xs={1}></Grid>
+              <Grid item xs={1}></Grid>
             </Grid>
-            <Grid item xs={1}></Grid>
-            <Grid item xs={1}></Grid>
-            <Grid item xs={1}></Grid>
-          </Grid>
-        </Box>
-      </Container>
+          </Box>
+        </Container>
+      </AppBar>
       <AppBar position="static" style={{ backgroundColor: "#101010" }}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
@@ -262,7 +269,7 @@ function Navbar({}: Props) {
               </Button>
 
               <Button
-                onClick={handleCloseNavMenu}
+                onClick={(e) => handleBorderOpen(openBorder)}
                 sx={{
                   my: 2,
                   color: "white",
@@ -712,6 +719,38 @@ function Navbar({}: Props) {
               <li>Pittsburgh</li>
               <li>Sacramento</li>
               <li>Texas</li>
+            </ul>
+          )}
+          {openBorder && (
+            <ul
+              style={{
+                listStyle: "none",
+                width: "700px",
+                paddingLeft: "410px",
+                fontSize: "17px",
+                fontFamily: "monospace",
+                display: "flex",
+              }}
+            >
+              <div>
+                <li> Latest</li>
+                <li>Video</li>
+                <li>Photos</li>
+                <li>Podcasts</li>
+                <li>In Depth</li>
+                <li>Local</li>
+                <li> A Moment With…</li>
+                <li>Innovators & Disruptors</li>
+              </div>
+              <div>
+                <li>Newsletters</li>
+                <li> Mobile</li>
+                <li>RSS</li>
+                <li>CBS Store</li>
+                <li>Paramount+</li>
+                <li>Join Our Talent Community</li>
+                <li>Davos 2023</li>
+              </div>
             </ul>
           )}
         </Container>
